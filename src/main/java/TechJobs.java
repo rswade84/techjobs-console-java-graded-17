@@ -10,7 +10,7 @@ public class TechJobs {
 
     static Scanner in = new Scanner(System.in);
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
         // Initialize our field map with key/name pairs
         HashMap<String, String> columnChoices = new HashMap<>();
@@ -30,6 +30,7 @@ public class TechJobs {
         // Allow the user to search until they manually quit
         while (true) {
 
+            // NOTE: Method that displays a menu of choices and returns selection...
             String actionChoice = getUserSelection("View jobs by (type 'x' to quit):", actionChoices);
 
             if (actionChoice == null) {
@@ -39,7 +40,7 @@ public class TechJobs {
                 String columnChoice = getUserSelection("List", columnChoices);
 
                 if (columnChoice.equals("all")) {
-                    printJobs(JobData.findAll());
+                    printJobs(JobData.findAll()); // Is printJobs created here?
                 } else {
 
                     ArrayList<String> results = JobData.findAll(columnChoice);
@@ -112,14 +113,33 @@ public class TechJobs {
                 validChoice = true;
             }
 
-        } while(!validChoice);
+        } while (!validChoice);
 
         return choiceKeys[choiceIdx];
     }
 
     // Print a list of jobs
+    // NOTE: someJobs represents job listings passed to the printJobs method...
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        System.out.println("printJobs is not implemented yet");
+        // NOTE: Im using print(), not println() in order to properly display on the same line...
+        if (someJobs.size() == 0) {
+            System.out.println("No Results");
+            return;
+        } else {
+            // NOTE: Using a for loop to iterate through listings...
+            for (int i = 0; i < someJobs.size(); i++) {
+                System.out.println("\n*****"); // Double check this...
+                // NOTE: Use map to represent a single key-value pair...
+                // NOTE: The .entrySet() method of HashMap returns a set of key-value pairs in the map...
+                // NOTE .get() method in a HashMap in Java is used to retrieve the value associated with a specific key.
+                for (Map.Entry<String, String> entry : someJobs.get(i).entrySet()) {
+                    String key = entry.getKey(); // NOTE: .getKey retrieves the key for each key-value pair...
+                    String value = entry.getValue(); // NOTE: getValue() returns the value associated with the key
+                    System.out.println(key + ": " + value);
+                }
+                System.out.println("*****");
+            }
+        }
     }
 }

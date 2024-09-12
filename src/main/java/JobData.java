@@ -89,12 +89,25 @@ public class JobData {
      * @param value The search term to look for
      * @return      List of all jobs with at least one field containing the value
      */
+
+    // NOTE: ...
     public static ArrayList<HashMap<String, String>> findByValue(String value) {
 
         // load data, if not already loaded
+        // NOTE: Leave loadData() as the first line...
         loadData();
 
+
+        // NOTE: Uses ArrayList to create a resizable array...
+        // NOTE: Uses HashMap to store key-value pairs...
         // TODO - implement this method
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+
+        for (HashMap<String, String> row : allJobs) {
+            // NOTE: WHAT IS .ENTRY USED FOR?
+            for (HashMap.Entry)
+        }
+
         return null;
     }
 
