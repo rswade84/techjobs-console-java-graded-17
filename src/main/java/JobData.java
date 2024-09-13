@@ -90,7 +90,7 @@ public class JobData {
      * @return      List of all jobs with at least one field containing the value
      */
 
-    // NOTE: ...
+    // NOTE: This array list creates the value variable...
     public static ArrayList<HashMap<String, String>> findByValue(String value) {
 
         // load data, if not already loaded
@@ -102,10 +102,17 @@ public class JobData {
         // NOTE: Uses HashMap to store key-value pairs...
         // TODO - implement this method
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+        String lowerCaseValue = value.toLowerCase();
 
+        // NOTE: Here, HashMap iterates through each HashMap in allJobs...
+        // NOTE: HashMaps store key-value pairs for quick retrieval, update, delete, etc...
         for (HashMap<String, String> row : allJobs) {
-            // NOTE: WHAT IS .ENTRY USED FOR?
-            for (HashMap.Entry)
+            // NOTE: .Entry represents the key-value pair and is used to iterate over
+            for (HashMap.Entry<String, String> job : row.entrySet()) {
+                String jobValue = job.getValue().toLowerCase();
+
+                if (jobValue.contains(lowerCaseValue))
+            }
         }
 
         return null;
