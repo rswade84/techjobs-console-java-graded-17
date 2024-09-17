@@ -70,12 +70,14 @@ public class JobData {
         loadData();
 
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+        String lowerCaseValue = value.toLowerCase();
 
         for (HashMap<String, String> row : allJobs) {
 
-            String aValue = row.get(column);
+            // NOTE: Added .toLowerCase() to avoid case-sensitivity...
+            String aValue = row.get(column).toLowerCase();
 
-            if (aValue.contains(value)) {
+            if (aValue.contains(lowerCaseValue)) {
                 jobs.add(row);
             }
         }
@@ -92,7 +94,7 @@ public class JobData {
 
 
     // TASK 2: Create method findByValue()... (DON'T DELETE THIS LINE)
-    // TASK 2a: Search across all columns "enable a search that looks for the search term in all of the columns."
+    // TASK 2a: Search across all columns "enable a search that looks for the search term in all the columns."
     // TASK 2b: Avoid duplicates "The code that you write should not contain duplicate jobs."
     // TASK 2c: "write your code in a way that if a new column is added to the data, your code will automatically search the new column."
     // NOTE: This array list creates the value variable...
@@ -112,7 +114,7 @@ public class JobData {
         // NOTE: Here, HashMap iterates through each HashMap in allJobs...
         // NOTE: HashMaps store key-value pairs for quick retrieval, update, delete, etc...
         for (HashMap<String, String> row : allJobs) {
-            // NOTE: .Entry represents the key-value pair and is used to iterate over
+            // NOTE: .Entry represents the key-value pair for each HashMap...
             for (HashMap.Entry<String, String> job : row.entrySet()) {
                 String jobValue = job.getValue().toLowerCase();
 
