@@ -90,6 +90,11 @@ public class JobData {
      * @return      List of all jobs with at least one field containing the value
      */
 
+
+    // TASK 2: Create method findByValue()... (DON'T DELETE THIS LINE)
+    // TASK 2a: Search across all columns "enable a search that looks for the search term in all of the columns."
+    // TASK 2b: Avoid duplicates "The code that you write should not contain duplicate jobs."
+    // TASK 2c: "write your code in a way that if a new column is added to the data, your code will automatically search the new column."
     // NOTE: This array list creates the value variable...
     public static ArrayList<HashMap<String, String>> findByValue(String value) {
 
@@ -111,11 +116,17 @@ public class JobData {
             for (HashMap.Entry<String, String> job : row.entrySet()) {
                 String jobValue = job.getValue().toLowerCase();
 
-                if (jobValue.contains(lowerCaseValue))
+                // NOTE: Checks if the value contains the search term...
+                if (jobValue.contains(lowerCaseValue)) {
+                    if (!jobs.contains(row)) {
+                        jobs.add(row);
+                    }
+                    break; // NOTE: Breaks out of loop to avoid duplicates...
+                }
             }
         }
 
-        return null;
+        return jobs;
     }
 
     /**
