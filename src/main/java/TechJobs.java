@@ -132,7 +132,7 @@ public class TechJobs {
 
         // NOTE: Im using print(), not println() in order to properly display on the same line...
         if (someJobs.size() == 0) {
-            System.out.println("No Results");
+            System.out.print("No Results");
             return;
         } else {
             // NOTE: Using a for loop to iterate through listings...
