@@ -27,10 +27,9 @@ public class TechJobs {
 
         System.out.println("Welcome to LaunchCode's TechJobs App!");
 
-        // Allow the user to search until they manually quit
+        // Allows the user to search until they manually quit by pressing 'x'...
         while (true) {
 
-            // NOTE: Method that displays a menu of choices and returns selection...
             String actionChoice = getUserSelection("View jobs by (type 'x' to quit):", actionChoices);
 
             if (actionChoice == null) {
@@ -40,7 +39,7 @@ public class TechJobs {
                 String columnChoice = getUserSelection("List", columnChoices);
 
                 if (columnChoice.equals("all")) {
-                    printJobs(JobData.findAll()); // Is printJobs created here?
+                    printJobs(JobData.findAll());
                 } else {
 
                     ArrayList<String> results = JobData.findAll(columnChoice);
@@ -75,7 +74,7 @@ public class TechJobs {
     private static String getUserSelection(String menuHeader, HashMap<String, String> choices) {
 
         int choiceIdx = -1;
-        Boolean validChoice = false;
+        boolean validChoice = false;
         String[] choiceKeys = new String[choices.size()];
 
         // Put the choices in an ordered structure so we can
@@ -119,33 +118,21 @@ public class TechJobs {
     }
 
     // Print a list of jobs
-
-    // TASK 1: Implement the printJobs method... (DON'T DELETE THIS LINE)
-    // TASK 1a: Format job listings...  (DON'T DELETE THIS LINE)
-    // TASK 1b: Print each job details by iterating through the HashMap entries... (DON'T DELETE THIS LINE)
-    // TASK 1c: Correct formatting between listings (\n) and (*****)... (DON'T DELETE THIS LINE)
-    // TASK 1d: Print "No Results" if jobs is empty... (DON'T DELETE THIS LINE)
-    // NOTE: ArrayList takes in HashMap to make it a resizable array
-    // NOTE: HashMap is used to store key-value pairs for quick retrieval, update, delete, etc...
-    // NOTE: someJobs represents job listings passed to the printJobs method...
+    // This is a Method that takes an array of HashMaps, were each HashMap contains key-value pairs for that particular job.
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        // NOTE: Im using print(), not println() in order to properly display on the same line...
-        if (someJobs.size() == 0) {
+
+        // This code checks if the list of jobs is empty, and if so, prints "No Results" and exits the method.
+        // Otherwise, it enters a for-loop to iterate through each job.
+        if (someJobs.isEmpty()) {
             System.out.print("No Results");
-            return;
         } else {
-            // NOTE: Using a for loop to iterate through listings...
-            // NOTE: .size() works by counting the number of elements in the array. Similar to length()
-            for (int i = 0; i < someJobs.size(); i++) {
-                System.out.println("\n*****"); // Double check this...
-                // NOTE: Use map to represent a single key-value pair...
-                // NOTE: The .entrySet() method of HashMap returns a set of key-value pairs in the map...
-                // NOTE .get() method in a HashMap in Java is used to retrieve the value associated with a specific key.
-                // NOTE: .entrySet() returns a set of Map.Entry. objects (key-value pairs)
-                for (Map.Entry<String, String> entry : someJobs.get(i).entrySet()) {
-                    String key = entry.getKey(); // NOTE: .getKey retrieves the key for each key...
-                    String value = entry.getValue(); // NOTE: getValue() retrieves the value for each key...
+            // if not, we enter a for Loop to iterate through each job.
+            for (HashMap<String, String> job : someJobs) {
+                System.out.println("\n*****");
+                for (Map.Entry<String, String> entry : job.entrySet()) {
+                    String key = entry.getKey(); // NOTE: .getKey retrieves the key...
+                    String value = entry.getValue(); // NOTE: getValue() retrieves the value of each key...
                     System.out.println(key + ": " + value); // NOTE: Prints key-value pairs...
                 }
                 System.out.println("*****");
