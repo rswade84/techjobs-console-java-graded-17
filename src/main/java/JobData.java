@@ -36,7 +36,6 @@ public class JobData {
         // load data, if not already loaded
         loadData();
 
-
         for (HashMap<String, String> row : allJobs) {
             // Uses the .get() method to retrieve the value of the given field...
             String aValue = row.get(field);
@@ -51,7 +50,6 @@ public class JobData {
 
     public static ArrayList<HashMap<String, String>> findAll() {
 
-        // load data, if not already loaded
         loadData();
 
         return allJobs;
@@ -96,7 +94,6 @@ public class JobData {
      * @param value The search term to look for
      * @return      List of all jobs with at least one field containing the value
      */
-
 
     // findByValue() holds the value of the user's search term...
     public static ArrayList<HashMap<String, String>> findByValue(String value) {

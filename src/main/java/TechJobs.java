@@ -30,14 +30,17 @@ public class TechJobs {
         // Allows the user to search until they manually quit by pressing 'x'...
         while (true) {
 
+            // Displays the user's menu of options... (search, list, quit) 25 & 26...
             String actionChoice = getUserSelection("View jobs by (type 'x' to quit):", actionChoices);
 
             if (actionChoice == null) {
                 break;
             } else if (actionChoice.equals("list")) {
 
+                // Shows user list of choices (Skill, Employer, Location, Position Type, or All). Line
                 String columnChoice = getUserSelection("List", columnChoices);
 
+                // If "all" is chosen, print all jobs...
                 if (columnChoice.equals("all")) {
                     printJobs(JobData.findAll());
                 } else {
@@ -117,18 +120,18 @@ public class TechJobs {
         return choiceKeys[choiceIdx];
     }
 
-    // Print a list of jobs
+    // Print a list of jobs - TASK 1
     // This is a Method that takes an array of HashMaps, were each HashMap contains key-value pairs for that particular job.
-    private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+    private static void printJobs(ArrayList<HashMap<String, String>> listOfJobs) {
 
 
         // This code checks if the list of jobs is empty, and if so, prints "No Results" and exits the method.
         // Otherwise, it enters a for-loop to iterate through each job.
-        if (someJobs.isEmpty()) {
+        if (listOfJobs.isEmpty()) {
             System.out.print("No Results");
         } else {
             // if not, we enter a for Loop to iterate through each job.
-            for (HashMap<String, String> job : someJobs) {
+            for (HashMap<String, String> job : listOfJobs) {
                 System.out.println("\n*****");
                 for (Map.Entry<String, String> entry : job.entrySet()) {
                     String key = entry.getKey(); // NOTE: .getKey retrieves the key...
