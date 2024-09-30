@@ -45,6 +45,7 @@ public class TechJobs {
                     printJobs(JobData.findAll());
                 } else {
 
+                    // Print jobs that match columnChoice
                     ArrayList<String> results = JobData.findAll(columnChoice);
 
                     System.out.println("\n*** All " + columnChoices.get(columnChoice) + " Values ***");
@@ -94,7 +95,7 @@ public class TechJobs {
 
             // Print available choices
             for (int j = 0; j < choiceKeys.length; j++) {
-                System.out.println("" + j + " - " + choices.get(choiceKeys[j]));
+                System.out.println(" " + j + " - " + choices.get(choiceKeys[j]));
             }
 
             if (in.hasNextInt()) {
@@ -120,23 +121,22 @@ public class TechJobs {
         return choiceKeys[choiceIdx];
     }
 
-    // Print a list of jobs - TASK 1
-    // This is a Method that takes an array of HashMaps, were each HashMap contains key-value pairs for that particular job.
+
+    /*
+    Task 1:Print a list of jobs
+    This is a method that takes an ArrayList of HashMaps*/
     private static void printJobs(ArrayList<HashMap<String, String>> listOfJobs) {
 
 
-        // This code checks if the list of jobs is empty, and if so, prints "No Results" and exits the method.
-        // Otherwise, it enters a for-loop to iterate through each job.
         if (listOfJobs.isEmpty()) {
             System.out.print("No Results");
         } else {
-            // if not, we enter a for Loop to iterate through each job.
             for (HashMap<String, String> job : listOfJobs) {
                 System.out.println("\n*****");
-                for (Map.Entry<String, String> entry : job.entrySet()) {
-                    String key = entry.getKey(); // NOTE: .getKey retrieves the key...
-                    String value = entry.getValue(); // NOTE: getValue() retrieves the value of each key...
-                    System.out.println(key + ": " + value); // NOTE: Prints key-value pairs...
+                for (Map.Entry<String, String> jobEntry : job.entrySet()) {
+                    String key = jobEntry.getKey();
+                    String value = jobEntry.getValue();
+                    System.out.println(key + ": " + value);
                 }
                 System.out.println("*****");
             }
