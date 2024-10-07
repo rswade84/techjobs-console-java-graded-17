@@ -93,7 +93,7 @@ public class TechJobs {
 
             System.out.println("\n" + menuHeader);
 
-            // Print available choices
+            // Print available choices for users to select, "0 - Search", "1 - List"...
             for (int j = 0; j < choiceKeys.length; j++) {
                 System.out.println("" + j + " - " + choices.get(choiceKeys[j]));
             }
@@ -109,7 +109,7 @@ public class TechJobs {
                 }
             }
 
-            // Validate user's input
+            // Validate user's input by seeing if it exists in the choice dictionary
             if (choiceIdx < 0 || choiceIdx >= choiceKeys.length) {
                 System.out.println("Invalid choice. Try again.");
             } else {
@@ -123,7 +123,7 @@ public class TechJobs {
 
 
     /*
-    Task 1:Print a list of jobs
+    Task 1: Print a list of jobs
     This is a method that takes an ArrayList of HashMaps*/
     private static void printJobs(ArrayList<HashMap<String, String>> listOfJobs) {
 

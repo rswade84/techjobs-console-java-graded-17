@@ -29,20 +29,14 @@ public class JobData {
 
     // This method returns a list of all values of the given field...
     public static ArrayList<String> findAll(String field) {
-
         ArrayList<String> values = new ArrayList<>();
-
         loadData();
-
         for (HashMap<String, String> row : allJobs) {
-
             String aValue = row.get(field);
-
             if (!values.contains(aValue)) {
                 values.add(aValue);
             }
         }
-
         return values;
     }
 
@@ -107,10 +101,11 @@ public class JobData {
         String lowercaseSearchTerm = value.toLowerCase();
 
         for (HashMap<String, String> row : allJobs) {
-            // .Entry represents the key-value pair for each HashMap...
+            // HashMap.Entry represents the key-value pair for each HashMap above...
             for (HashMap.Entry<String, String> job : row.entrySet()) {
                 String jobValue = job.getValue().toLowerCase();
 
+                // If 'a value' contains the value of the search term, add it to row...
                 if (jobValue.contains(lowercaseSearchTerm)) {
                     if (!jobs.contains(row)) {
                         jobs.add(row);
